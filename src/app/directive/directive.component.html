@@ -1,0 +1,56 @@
+<div class="row">
+
+  <div class="col-md-4">
+  <h5>*ngIf</h5>
+  <hr>
+
+
+  <input class="form-control mb-2" type="text" [(ngModel)]="username" placeholder="Enter the username" (keyup.enter)="addUser()">
+
+  <div *ngIf="usernames.length > 0; then data else nodata">
+
+  </div>
+  <ng-template #data>
+
+      <p *ngFor="let name of usernames;index as i">{{i+1}}. {{name}} </p>
+
+  </ng-template>
+  <ng-template #nodata>
+    No data
+  </ng-template>
+
+
+
+  </div>
+  <div class="col-md-4">
+  <h5>*ngFor</h5>
+  <hr>
+  <div *ngIf="deptArray.length > 0">
+    <ul>
+      <li *ngFor="let dept of deptArray;even as isEven"> {{dept.deptno}} - {{dept.dname}} <span *ngIf="!isEven">-[Odd]</span> </li>
+    </ul>
+  </div>
+  </div>
+  <div class="col-md-4">
+    <h5>Switch</h5>
+    <hr>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="viewtype=='table'" (click)="viewtype = 'table'"  >Table View</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="viewtype=='list'" (click)="viewtype = 'list'" >List View</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="viewtype=='map'" (click)="viewtype = 'map'" >Map View</a>
+      </li>
+    </ul>
+    <div [ngSwitch]="viewtype">
+        <div *ngSwitchCase="'table'">Table View Works!</div>
+        <div *ngSwitchCase="'list'">List View Works</div>
+        <div *ngSwitchCase="'map'">Map View Works!</div>
+        <div *ngSwitchDefault>Default view works</div>
+    </div>
+  </div>
+
+</div>

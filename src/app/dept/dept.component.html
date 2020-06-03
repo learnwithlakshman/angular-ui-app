@@ -1,0 +1,3 @@
+<div *ngFor="let d of deptArray" class="mb-2">
+  <app-viewdept [dept]="d" (remove)="removeDeptDetails($event)"></app-viewdept>
+</div>

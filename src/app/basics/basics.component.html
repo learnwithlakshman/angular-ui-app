@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-md-6">
+  <h3 class="text-danger">{{ title }}</h3>
+ <hr>
+  <h5>Angular Data Binding Image</h5>
+  <img [src]="imgUrl">
+
+
+
+  <h5>Class Binding</h5>
+  <button class="btn" [class.btn-primary]="status == 'ok'">True</button>
+  <button class="btn" [class.btn-danger]="status != 'ok'">False</button>
+  <h5>Style Binding</h5>
+
+  <p class="box" [style.background-color]="status=='ok'?'green':'red'">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe atque ad aut repellat! Dolorum quaerat cumque delectus numquam reprehenderit quia nesciunt? Enim provident soluta quasi, corrupti laboriosam error tempore?
+  </p>
+
+  <table class="table table-hover">
+    <thead>
+        <tr>
+          <th [attr.colspan]="colSpan">Department Details</th>
+        </tr>
+        <tr>
+          <th>Deptno</th>
+          <th>Danme</th>
+          <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dept of deptArray">
+          <td>{{dept.deptno}}</td>
+          <td>{{dept.dname}}</td>
+          <td>{{dept.location}}</td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+  <div class="col-md-6">
+  <h3 class="text-danger">Event Binding</h3>
+  <hr>
+  <img [src]="imgSrc" width="200px" height="200px">
+  <br>
+  <button class="btn btn-primary" (click)="changeStatus()">On/Off</button>
+  <hr>
+  <input type="text" #name placeholder="Enter your name" class="form-control" (keyup.enter)="getInputData(name.value)">
+  {{username}}
+  <br>
+  <input type="text" [(ngModel)]="email" placeholder="Enter your name" class="form-control" (keyup.enter)="collectEmail()">
+  Email: {{email}}
+  <h3>Clock</h3>
+   <div class="py-3 bg-danger text-center outer-box mt-2">
+      <span>{{h}}</span>:
+      <span>{{m}}</span>:
+      <span>{{s}}</span>
+  </div>
+  <h3>User CRUD operation</h3>
+
+  <input type="text" class="form-control" placeholder="Enter username" [(ngModel)]="username" (keyup.enter)="saveOrUpdateUser()">
+
+  <hr>
+  <ul>
+    <li *ngFor="let name of usersArray">
+      {{name}}
+       <i class="fas fa-trash float-right mr-2" (click)="deleteUser(name)">
+
+      </i>
+      <i class="fas fa-edit float-right mr-2" (click)="editUser(name)"></i>
+    </li>
+  </ul>
+
+
+  </div>
+
+
+
+
+</div>
