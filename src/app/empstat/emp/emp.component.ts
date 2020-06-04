@@ -1,4 +1,4 @@
-import { DeptCount } from './../model/deptcount.model';
+import { DeptCount, Employee } from './../model/deptcount.model';
 import { EmpService } from './../emp.service';
 import { Component, OnInit } from '@angular/core';
 import { GoogleChartInterface } from 'ng2-google-charts';
@@ -11,6 +11,11 @@ export class EmpComponent implements OnInit {
 
   public chartData: GoogleChartInterface;
   deptCount:DeptCount[] = [];
+  employees:Employee[] = [];
+
+  name = "Krish";
+  birthday = new Date(1988, 3, 15);
+  desc = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ut vitae quo sit architecto. Velit facere animi officiis cumque. Possimus similique incidunt saepe placeat reiciendis laborum minus tenetur magni illum!"
   constructor(private empService:EmpService) {
       this.deptCount = this.empService.getEmployeeCount();
       let data:any[] = [["Dname","Count"]]
@@ -21,6 +26,11 @@ export class EmpComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      this.empService.getEmployeeDetails()
+      .subscribe(resp=>{
+          console.log(resp);
+          this.employees = resp;
+      });
   }
 
   drawDeptCountChart(data){

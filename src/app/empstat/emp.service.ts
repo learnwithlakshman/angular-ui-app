@@ -1,11 +1,15 @@
-import { DeptCount } from './model/deptcount.model';
+import { Dept } from './../shared/dept.model';
+import { DeptCount, Employee } from './model/deptcount.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmpService {
+
 
 
   deptCount:DeptCount[]=[
@@ -27,13 +31,20 @@ export class EmpService {
     }
 
   ]
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   getEmployeeCount(){
-      //Logic
+
       return this.deptCount;
   }
 
+  getDeptDetails(){
+    return this.http.get<Dept[]>('../../assets/dept.json');
+  }
+
+  getEmployeeDetails(){
+    return this.http.get<Employee[]>('../../assets/employee.json');
+  }
   getDnameByDeptno(deptno:number){
 
   }

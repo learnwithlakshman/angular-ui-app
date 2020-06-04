@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { DeptComponent } from './dept/dept.component';
 import { ViewdeptComponent } from './viewdept/viewdept.component';
-
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { ViewdeptComponent } from './viewdept/viewdept.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

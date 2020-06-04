@@ -5,10 +5,12 @@ import { EmpstatRoutingModule } from './empstat-routing.module';
 import { EmpstatComponent } from './empstat.component';
 import { DeptComponent } from './dept/dept.component';
 import { EmpComponent } from './emp/emp.component';
+import { SummaryPipe } from './summary.pipe';
+import { KeyformatDirective } from './keyformat.directive';
 
 
 @NgModule({
-  declarations: [EmpstatComponent, DeptComponent, EmpComponent],
+  declarations: [EmpstatComponent, DeptComponent, EmpComponent, SummaryPipe, KeyformatDirective],
   imports: [
     CommonModule,
     EmpstatRoutingModule,
