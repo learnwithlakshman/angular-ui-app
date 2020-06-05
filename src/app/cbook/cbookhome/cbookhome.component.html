@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-8">
     <div class="row">
       <div class="col-md-6">
         <h5 class="text">Contacts</h5>
@@ -38,10 +38,12 @@
     <div class="spinner-border" role="status" [hidden]="loaded">
       <span class="sr-only">Loading...</span>
     </div>
-    <ng-template #elseBlock> <h5 class="text-info">No Contacts found</h5> </ng-template>
+    <ng-template #elseBlock>
+      <h5 class="text-info">No Contacts found</h5>
+    </ng-template>
 
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
     <form [formGroup]="cform" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label>Name:</label>
@@ -54,17 +56,29 @@
       <div class="form-group">
         <label>Email:</label>
         <input type="email" formControlName="email" placeholder="Enter the email" class="form-control">
+        <div *ngIf="email.touched && email.invalid">
+          <div *ngIf="email.errors.required" class="alert alert-danger">Email cant be empty</div>
+          <div *ngIf="email.errors.email" class="alert alert-danger">Invalid Email</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Mobile:</label>
         <input type="text" formControlName="mobile" placeholder="Enter the mobile" class="form-control">
+        <div *ngIf="mobile.touched && mobile.invalid">
+          <div *ngIf="mobile.errors.required" class="alert alert-danger">Mobile cant be empty</div>
+          <div *ngIf="mobile.errors.minlength" class="alert alert-danger">Enter 10 Digits Mobile Number</div>
+          <div *ngIf="mobile.errors.maxlength" class="alert alert-danger">Enter only 10 Digits</div>
+        </div>
       </div>
       <div class="form-group">
         <label>City:</label>
         <input type="text" formControlName="city" placeholder="Enter the city" class="form-control">
+        <div *ngIf="city.touched && city.invalid">
+          <div *ngIf="city.errors.required" class="alert alert-danger">City cant be empty</div>
+        </div>
       </div>
-      <button class="btn btn-primary" [disabled]="!cform.valid" [hidden] = "canUpdate">Add Contact</button>
-      <button class="btn btn-primary" [disabled]="!cform.valid" [hidden] = "!canUpdate">Update Contact</button>
+      <button class="btn btn-primary" [disabled]="!cform.valid" [hidden]="canUpdate">Add Contact</button>
+      <button class="btn btn-primary" [disabled]="!cform.valid" [hidden]="!canUpdate">Update Contact</button>
     </form>
   </div>
 </div>

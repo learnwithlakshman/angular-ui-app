@@ -20,9 +20,9 @@ export class CbookhomeComponent implements OnInit {
 
     this.cform = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      email: [''],
-      mobile: [''],
-      city: ['']
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      city: ['', Validators.required]
     });
 
   }
@@ -121,5 +121,17 @@ export class CbookhomeComponent implements OnInit {
 
   get name() {
     return this.cform.get('name');
+  }
+
+  get mobile() {
+    return this.cform.get('mobile');
+  }
+
+  get email() {
+    return this.cform.get('email');
+  }
+
+  get city() {
+    return this.cform.get('city');
   }
 }
