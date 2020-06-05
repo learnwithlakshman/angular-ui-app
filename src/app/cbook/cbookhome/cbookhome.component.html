@@ -58,7 +58,8 @@
         <label>City:</label>
         <input type="text" formControlName="city" placeholder="Enter the city" class="form-control">
       </div>
-      <button class="btn btn-primary" [disabled]="!cform.valid">Add Contact</button>
+      <button class="btn btn-primary" [disabled]="!cform.valid" [hidden] = "canUpdate">Add Contact</button>
+      <button class="btn btn-primary" [disabled]="!cform.valid" [hidden] = "!canUpdate">Update Contact</button>
     </form>
   </div>
 </div>

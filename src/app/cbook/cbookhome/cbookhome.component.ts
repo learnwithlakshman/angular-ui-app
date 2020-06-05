@@ -9,10 +9,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./cbookhome.component.css']
 })
 export class CbookhomeComponent implements OnInit {
+
   contacts: Contact[] = [];
   cform: FormGroup;
   cid: string;
   searchStr: string;
+  canUpdate = false;
   constructor(private fb: FormBuilder, private cservice: CbookService) {
 
     this.cform = this.fb.group({
@@ -30,10 +32,24 @@ export class CbookhomeComponent implements OnInit {
 
   onSubmit() {
     const contact: ContactDTO = this.cform.value;
+    if (this.canUpdate && this.cid !== '') {
+      // tslint:disable-next-line: max-line-length
+      const updatedContact: Contact = { cid: this.cid, name: contact.name, mobile: contact.mobile, city: contact.city, email: contact.email };
+      this.cservice.updateContact(updatedContact).subscribe(res => {
+        if (res) {
+          alert('Update successfull');
+          this.canUpdate = false;
+          this.getContacts();
+        }else{
+          alert('Something went wrong while updating contact');
+        }
+      });
+    } else {
+      this.cservice.addContact(contact).subscribe(res => {
+        this.getContacts();
+      });
+    }
     this.cform.reset();
-    this.cservice.addContact(contact).subscribe(res => {
-      this.getContacts();
-    });
   }
 
   getContacts() {
@@ -48,22 +64,23 @@ export class CbookhomeComponent implements OnInit {
       this.cservice.delete(cid).subscribe(res => {
         if (res) {
           this.getContacts();
+        } else {
+          alert('Something went wrong while deleting contact');
         }
       });
-    } else {
-      alert('Something went wrong while deleting contact');
     }
   }
 
   editContact(contact: Contact) {
-    this.cid = contact.id;
+    this.cid = contact.cid;
     const mycontact = {
       name: contact.name,
       city: contact.city,
       mobile: contact.mobile,
       email: contact.email
-    }
+    };
     this.cform.setValue(mycontact);
+    this.canUpdate = true;
   }
 
   search() {

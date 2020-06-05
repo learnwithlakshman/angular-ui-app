@@ -23,4 +23,8 @@ export class CbookService {
   search(str) {
     return this.http.get<Contact[]>(`${this.baseUrl}search/${str}`);
   }
+
+  updateContact(contact: Contact) {
+    return this.http.put<Contact>(`${this.baseUrl}update`, contact);
+  }
 }

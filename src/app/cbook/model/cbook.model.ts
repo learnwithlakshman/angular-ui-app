@@ -6,7 +6,7 @@ export interface ContactDTO {
 }
 
 export interface Contact {
-  id: string,
+  cid: string,
   city: string,
   email: string,
   mobile: string,
