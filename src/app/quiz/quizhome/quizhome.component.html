@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-8">
+
+        <div *ngFor = "let quiz of quizData.questions;index as i">
+
+            <p>#{{i+1}}) {{quiz.question}}</p>
+
+            <div *ngFor="let op of quiz.options">
+                <p>{{op}}</p>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-md-4">
+       <p>QUIZ RESULTS</p>
+    </div>
+</div>

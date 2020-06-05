@@ -39,7 +39,7 @@ export class CbookhomeComponent implements OnInit {
       this.cservice.updateContact(updatedContact).subscribe(res => {
         if (res) {
           alert('Update successfull');
-          this.canUpdate = false;
+          this.formReset();
           this.getContacts();
         } else {
           alert('Something went wrong while updating contact');
@@ -54,7 +54,7 @@ export class CbookhomeComponent implements OnInit {
   }
 
   getContacts() {
-    this.loaded=false;
+    this.loaded = false;
     this.cservice.getContacts().subscribe(res => {
       this.contacts = res;
       this.loaded = true;
@@ -62,6 +62,7 @@ export class CbookhomeComponent implements OnInit {
   }
 
   delete(contact: any) {
+    this.formReset();
     const cid = contact.cid;
     if (confirm(`Are you sure to delete this contact with name ${contact.name} ?`)) {
       this.cservice.delete(cid).subscribe(res => {
@@ -105,8 +106,16 @@ export class CbookhomeComponent implements OnInit {
   }
 
   refreshContacts() {
-    this.searchStr = '';
-    this.getContacts();
+    if (this.searchStr !== '') {
+      this.searchStr = '';
+      this.getContacts();
+    }
+  }
+
+  formReset() {
+    this.cform.reset();
+    this.canUpdate = false;
+    this.cid = '';
   }
 
 
