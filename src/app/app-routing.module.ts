@@ -30,6 +30,10 @@ const routes: Routes = [
     {
       path:'empstat',
       loadChildren:()=>import('./empstat/empstat.module').then(m=>m.EmpstatModule)
+    },
+    {
+      path:'cbook',
+      loadChildren:()=>import('./cbook/cbook.module').then(m=>m.CbookModule)
     }
 
 ];

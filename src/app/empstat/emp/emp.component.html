@@ -4,7 +4,7 @@
 
     Name: {{name}}<br>
     DOB: {{birthday | date:"yyyy-MM-dd"}}<br>
-    <b>About:</b> <p>{{desc | summary:'':'uppercase'}}</p>
+    <b>About:</b> <p>{{desc | summary:100:'uppercase'}}</p>
     <hr>
 
     <input type="text" name="cardnumber" appKeyformat class="form-control" placeholder="Enter key">
