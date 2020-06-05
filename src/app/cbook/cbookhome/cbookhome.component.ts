@@ -15,6 +15,7 @@ export class CbookhomeComponent implements OnInit {
   cid: string;
   searchStr: string;
   canUpdate = false;
+  loaded = false;
   constructor(private fb: FormBuilder, private cservice: CbookService) {
 
     this.cform = this.fb.group({
@@ -40,7 +41,7 @@ export class CbookhomeComponent implements OnInit {
           alert('Update successfull');
           this.canUpdate = false;
           this.getContacts();
-        }else{
+        } else {
           alert('Something went wrong while updating contact');
         }
       });
@@ -53,8 +54,10 @@ export class CbookhomeComponent implements OnInit {
   }
 
   getContacts() {
+    this.loaded=false;
     this.cservice.getContacts().subscribe(res => {
       this.contacts = res;
+      this.loaded = true;
     });
   }
 
@@ -85,8 +88,10 @@ export class CbookhomeComponent implements OnInit {
 
   search() {
     if (this.searchStr !== '') {
+      this.loaded = false;
       this.cservice.search(this.searchStr).subscribe(res => {
         this.contacts = res;
+        this.loaded = true;
       });
     } else {
       this.getContacts();
@@ -100,6 +105,7 @@ export class CbookhomeComponent implements OnInit {
   }
 
   refreshContacts() {
+    this.searchStr = '';
     this.getContacts();
   }
 

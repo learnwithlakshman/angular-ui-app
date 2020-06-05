@@ -35,7 +35,9 @@
         </tbody>
       </table>
     </div>
-
+    <div class="spinner-border" role="status" [hidden]="loaded">
+      <span class="sr-only">Loading...</span>
+    </div>
     <ng-template #elseBlock> <h5 class="text-info">No Contacts found</h5> </ng-template>
 
   </div>
