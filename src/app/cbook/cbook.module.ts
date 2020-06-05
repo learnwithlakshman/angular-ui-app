@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CbookRoutingModule } from './cbook-routing.module';
 import { CbookComponent } from './cbook.component';
 import { CbookhomeComponent } from './cbookhome/cbookhome.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     CbookRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class CbookModule { }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl:"https://lwl-cb.herokuapp.com/api/capp/"
+  baseUrl: 'http://localhost:8080/api/capp/'
 };
 
 /*
