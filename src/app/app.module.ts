@@ -1,4 +1,4 @@
-
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,18 +12,21 @@ import { DeptComponent } from './dept/dept.component';
 import { ViewdeptComponent } from './viewdept/viewdept.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuizhomeComponent } from './quiz/quizhome/quizhome.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent, HeaderComponent, BasicsComponent, HomeComponent, DirectiveComponent, DeptComponent,
     ViewdeptComponent,
     QuizhomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

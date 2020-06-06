@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { QuizhomeComponent } from './quiz/quizhome/quizhome.component';
 import { DeptComponent } from './dept/dept.component';
 import { DirectiveComponent } from './directive/directive.component';
@@ -10,7 +11,7 @@ import { BasicsComponent } from './basics/basics.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: LoginComponent
   },
   {
     path: 'home',
@@ -35,7 +36,7 @@ const routes: Routes = [
   {
     path: 'cbook',
     loadChildren: () => import('./cbook/cbook.module').then(m => m.CbookModule)
-  }, 
+  },
   {
     path:'quiz',
     component:QuizhomeComponent

@@ -1,18 +1,23 @@
-<div class="row">
+<div class="py-3 bg-danger text-center text-white mb-2">
+  <h3>Learning Java by Doing Quiz</h3>
+</div>
+<div class="row" *ngIf="quiz">
     <div class="col-md-8">
 
-        <div *ngFor = "let quiz of quizData.questions;index as i">
-
-            <p>#{{i+1}}) {{quiz.question}}</p>
-
-            <div *ngFor="let op of quiz.options">
-                <p>{{op}}</p>
+       <form #f="ngForm" (ngSubmit)="submitQuiz(f)">
+          <div class="form-group" *ngFor="let question of quiz.questions;index as i">
+            <h5>{{i+1}}. {{question.qdata}}</h5>
+            <div *ngFor="let option of question.options;index as c">
+                <input type="radio" name="{{i+1}}"  #options="ngModel" value="{{c+1}}" ngModel>&nbsp;{{option}}
             </div>
-
-        </div>
+          </div>
+          <button class="btn btn-primary">Submit</button>
+       </form>
 
     </div>
-    <div class="col-md-4">
-       <p>QUIZ RESULTS</p>
+    <div class="col-md-4" *ngIf="result">
+        <div class="box">
+          {{result.percentage}} %
+        </div>
     </div>
 </div>

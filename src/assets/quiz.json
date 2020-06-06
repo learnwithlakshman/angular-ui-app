@@ -1,69 +1,35 @@
 {
-   "quiz":"Technology",
-   "questions":[
-	{
-		"question": "Java has how many primitive data types?",
-                "options": [
-                    "4",
-                    "5",
-                    "6",
-                    "8"
-                ],
-                "answer": "8"
-	},
-
-	{
-		"question": "What is super class for every class in java?",
-                "options": [
-                    "String",
-                    "Object",
-                    "Math",
-                    "System"
-                ],
-                "answer": "Object"
-	},
-	{
-		"question": "Which of the following is not a valid java.lang.Object class method",
-                "options": [
-                    "toString",
-                    "clone",
-                    "getClass",
-                    "finally"
-                ],
-                "answer": "finally"
-	},
-
-	{
-		"question": " a = 10; b = 20 ; c = 30; d=(a>b&&a>c)?a:(b>c)?b:c; what is d value ?",
-                "options": [
-                    "10",
-                    "20",
-                    "30",
-                    "40"
-                ],
-                "answer": "30"
-	},
-
-	{
-		"question": "What is the output of the 10 >> 1 ?",
-                "options": [
-                    "10",
-                    "5",
-                    "20",
-                    "0"
-                ],
-                "answer": "5"
-	},
-	{
-		"question": "Which of the following is not a valid java.lang.String class method?",
-                "options": [
-                    "length",
-                    "height",
-                    "contact",
-                    "trim"
-                ],
-                "answer": "height"
-	}
-
-   ]
+  "quizId": 1001,
+  "questions":[
+      {
+        "qid":1,
+        "qdata":"What is super class for every class in java?",
+        "options":["String","Object","Math","System"],
+        "answer":2
+      },
+      {
+        "qid":2,
+        "qdata":"Which of the following is not a java.lang.String class method?",
+        "options":["trim","length","reverse","split"],
+        "answer":3
+      },
+      {
+        "qid":3,
+        "qdata":"What is the output of 10 >>  1?",
+        "options":["10","5","20","1"],
+        "answer":2
+      },
+      {
+        "qid":4,
+        "qdata":"Which of following is not true about Java?",
+        "options":["Platform Independent","Uses Byte code","When compile generates.exe file","Java has interfaces"],
+        "answer":3
+      },
+      {
+        "qid":5,
+        "qdata":"Which of the following is not a valid data types in Java?",
+        "options":["int","byte","short","array"],
+        "answer":4
+      }
+  ]
 }

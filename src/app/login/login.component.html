@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+  <div class="py-5 bg-white"></div>
+  <div class="py-5 bg-secondary text-center text-white">
+    <form #f="ngForm" class="loginForm" (ngSubmit)="login(f)">
+    <div *ngIf="!isValid" class="text-danger">{{invalidMessage}}</div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email"  ngModel  #email="ngModel" name="email" class="form-control" placeholder="Enter email" id="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password</label>
+      <input type="password" ngModel  #password="ngModel" name="password" class="form-control" placeholder="Enter password" id="pwd">
+    </div>
+
+    <button type="submit" class="btn btn-danger">Submit</button>
+  </form>
+
+  </div>
+  <div class="py-5 bg-white"></div>
+</div>
+</div>

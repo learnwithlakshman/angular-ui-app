@@ -6,7 +6,13 @@ export interface Quiz {
 }
 
 export interface Question {
-    question: string;
+    qdata: string;
     options: string[];
     answer: string;
+}
+
+export interface Result{
+  percentage:number,
+  noofcorrect:number,
+  noofwrong:number
 }
